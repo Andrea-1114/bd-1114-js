@@ -70,6 +70,8 @@ console.log(JSON.stringify(deLa1114, null, 2));
 - Node 22.5 o superior. Trae `node:sqlite` incorporado. Verifican con `node --version`.
 - Nada mas. No hay `npm install`, no hay servidor, no hay base de datos que instalar.
 
+Cada alumno trabaja en su propia maquina. El primer paso de la clase es que verifiquen `node --version` y, si no lo tienen (o la version es mas vieja que 22.5.0), lo instalen desde https://nodejs.org (version LTS, la que dice "Recommended"). Este paso puede llevar unos minutos: tenerlo previsto al inicio de la clase.
+
 Nota tecnica: al usar `node:sqlite` aparece un warning "experimental". No es un error. Se explica una vez y se sigue.
 
 ## Archivos del taller

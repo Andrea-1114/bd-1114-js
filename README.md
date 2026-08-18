@@ -8,13 +8,27 @@ Mover datos en un solo ciclo: de JSON a una base de datos, consultarlos con SQL 
 
 ## Requisitos
 
-- Node 22.5 o superior. Trae `node:sqlite` incorporado, no hay que instalar nada.
+- Node 22.5 o superior. Trae `node:sqlite` incorporado, no hay que instalar nada mas.
 
-Verifica tu version con:
+Cada alumno trabaja en su propia maquina, asi que lo primero es verificar que Node este instalado.
+
+### Verificar si tenes Node
+
+Abrí una terminal y ejecuta:
 
 ```bash
 node --version
 ```
+
+Tiene que devolver `v22.5.0` o superior.
+
+### Si no lo tenes (o la version es mas vieja)
+
+1. Entrá a https://nodejs.org
+2. Descargá la version LTS (la que dice "Recommended")
+3. Instalala con doble clic (todo "Siguiente")
+4. Cerrá la terminal y abrila de nuevo
+5. Verificá otra vez con `node --version`
 
 ## Como empezar
 

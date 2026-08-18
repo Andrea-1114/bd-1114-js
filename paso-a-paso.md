@@ -4,15 +4,25 @@ Vas a construir un solo archivo, `escuela.js`, etapa por etapa. No copies sin en
 
 ## Etapa 0 - Verificar Node
 
+Cada uno trabaja en su propia maquina, asi que lo primero es saber si tenes Node.
+
 Abrí la terminal y ejecuta:
 
 ```bash
 node --version
 ```
 
-Tiene que dar `v22.5.0` o superior. Si da menos, avisa al profe.
+Tiene que dar `v22.5.0` o superior.
 
-Crea una carpeta para el taller y ubicate adentro:
+Si da "comando no encontrado", un numero menor a `22.5.0`, o directamente no sale nada, tenes que instalarlo:
+
+1. Entrá a https://nodejs.org
+2. Descargá la version LTS (la que dice "Recommended")
+3. Instalala con doble clic (todo "Siguiente")
+4. Cerrá la terminal y abrila de nuevo
+5. Verificá otra vez con `node --version`
+
+Cuando ya tengas Node, crea una carpeta para el taller y ubicate adentro:
 
 ```bash
 mkdir base-datos-1114
