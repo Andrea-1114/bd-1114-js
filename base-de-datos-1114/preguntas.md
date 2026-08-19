@@ -8,3 +8,17 @@
 
 
 # 3.Que alumnos se inscribieron a "Base de Datos"?
+
+     Ana, Luis y Pedro
+
+# 4.Cuantos cursos tiene cada alumno?
+
+   0 cursos.
+
+
+
+# 5. Una frase explicando, con sus palabras, para que usa JSON y para que usa SQLite.
+
+    JSON: Sirve para guardar y organizar datos de una forma sencilla, para que sea fácil leerlos y usarlos.
+
+    SQLite:Sirve para guardar datos en una base de datos y poder buscarlos, modificarlos o eliminarlos cuando sea necesario.
