@@ -4,25 +4,25 @@ Vas a construir un solo archivo, `escuela.js`, etapa por etapa. No copies sin en
 
 ## Etapa 0 - Verificar Node
 
-Cada uno trabaja en su propia maquina, asi que lo primero es saber si tenes Node.
+Cada uno trabaja en su propio computador, así que lo primero es saber si tienes Node.
 
-Abrí la terminal y ejecuta:
+Abre la terminal y ejecuta:
 
 ```bash
 node --version
 ```
 
-Tiene que dar `v22.5.0` o superior.
+Debe devolver `v22.5.0` o superior.
 
-Si da "comando no encontrado", un numero menor a `22.5.0`, o directamente no sale nada, tenes que instalarlo:
+Si dice "comando no encontrado", un número menor a `22.5.0`, o directamente no sale nada, tienes que instalarlo:
 
-1. Entrá a https://nodejs.org
-2. Descargá la version LTS (la que dice "Recommended")
-3. Instalala con doble clic (todo "Siguiente")
-4. Cerrá la terminal y abrila de nuevo
-5. Verificá otra vez con `node --version`
+1. Entra a https://nodejs.org
+2. Descarga la versión LTS (la que dice "Recommended")
+3. Instálala con doble clic (todo "Siguiente")
+4. Cierra la terminal y ábrela de nuevo
+5. Verifica otra vez con `node --version`
 
-Cuando ya tengas Node, crea una carpeta para el taller y ubicate adentro:
+Cuando ya tengas Node, crea una carpeta para el taller y ubícate adentro:
 
 ```bash
 mkdir base-datos-1114
@@ -48,7 +48,7 @@ const mayores = alumnos.filter(a => a.edad >= 20);
 console.log('Mayores de 20:', mayores);
 ```
 
-Corre con:
+Ejecuta con:
 
 ```bash
 node escuela.js
@@ -58,7 +58,7 @@ Esto ya lo sabes de la clase pasada: JSON es un array de objetos. `filter` devue
 
 ## Etapa 2 - El problema
 
-JSON funciona, pero tiene dos limites. Agrega esto al final de `escuela.js`:
+JSON funciona, pero tiene dos límites. Agrega esto al final de `escuela.js`:
 
 ```javascript
 const resultado = alumnos
@@ -72,21 +72,21 @@ console.log('Consulta con filtros:', resultado);
 
 Preguntas:
 
-1. Que pasa con este codigo si necesito 5 filtros? Y si necesito 10?
-2. Si cierro el programa, donde quedaron los datos?
+1. ¿Qué pasa con este código si necesito 5 filtros? ¿Y si necesito 10?
+2. Si cierro el programa, ¿dónde quedaron los datos?
 
 Respuesta corta: JSON **no consulta** (solo filtra a mano) y **no persiste** (se pierde al cerrar). Para eso existe SQLite.
 
 ## Etapa 3 - SQLite entra
 
-Borra el contenido de `escuela.js` y empeza de nuevo. Primero, pedimos el modulo:
+Borra el contenido de `escuela.js` y empieza de nuevo. Primero, pedimos el módulo:
 
 ```javascript
 const { DatabaseSync } = require('node:sqlite');
 const db = new DatabaseSync('escuela.db');
 ```
 
-Esa linea abre (o crea) un archivo llamado `escuela.db`. Ahi van a vivir los datos para siempre.
+Esa línea abre (o crea) un archivo llamado `escuela.db`. Ahí van a vivir los datos para siempre.
 
 Ahora creamos la tabla y cargamos datos:
 
@@ -115,12 +115,12 @@ for (const a of alumnos) {
 console.log('Datos cargados en escuela.db');
 ```
 
-Fijate dos cosas:
+Fíjate dos cosas:
 
-- `?` es un comodin. `run` lo reemplaza por el valor que le pases, en orden. Asi evitamos meter datos a mano en el SQL.
-- `id INTEGER PRIMARY KEY` le da a cada alumno un numero unico automatico.
+- `?` es un comodín. `run` lo reemplaza por el valor que le pases, en orden. Así evitamos meter datos a mano en el SQL.
+- `id INTEGER PRIMARY KEY` le da a cada alumno un número único automático.
 
-Corre con `node escuela.js`. Si lo corres dos veces, se duplican los datos. Eso es normal: estamos insertando, no reemplazando. Mas adelante lo arreglamos.
+Ejecuta con `node escuela.js`. Si lo ejecutas dos veces, se duplican los datos. Eso es normal: estamos insertando, no reemplazando. Más adelante lo arreglamos.
 
 ## Etapa 4 - Consultas con SELECT
 
@@ -134,7 +134,7 @@ const selMayores = db.prepare('SELECT nombre, edad FROM alumnos WHERE edad >= ? 
 console.log('Mayores de 20:', selMayores.all(20));
 
 const selPrimero = db.prepare('SELECT * FROM alumnos ORDER BY edad DESC LIMIT 1');
-console.log('El mas grande:', selPrimero.get());
+console.log('El más grande:', selPrimero.get());
 
 const selCuenta = db.prepare('SELECT COUNT(*) AS total FROM alumnos');
 console.log('Total de alumnos:', selCuenta.get());
@@ -142,16 +142,16 @@ console.log('Total de alumnos:', selCuenta.get());
 
 Compara esto con el `filter` de la Etapa 1. Es lo mismo, pero:
 
-- El SQL se lee como una pregunta en ingles ("trae los alumnos donde la seccion sea 1114").
+- El SQL se lee como una pregunta en inglés ("trae los alumnos donde la sección sea 1114").
 - Los datos viven en disco, no en memoria.
 
-Tres metodos que tenes que distinguir:
+Tres métodos que tienes que distinguir:
 
-| Metodo | Devuelve |
+| Método | Devuelve |
 |---|---|
-| `.run()` | Resultado de insertar/actualizar/borrar (cuantos cambios) |
-| `.get()` | La primera fila que matchea (un solo objeto) |
-| `.all()` | Todas las filas que matchean (un array) |
+| `.run()` | Resultado de insertar/actualizar/borrar (cuántos cambios) |
+| `.get()` | La primera fila que coincide (un solo objeto) |
+| `.all()` | Todas las filas que coinciden (un array) |
 
 ## Etapa 5 - Modificar y borrar
 
@@ -171,20 +171,20 @@ Dato importante: `UPDATE` y `DELETE` sin `WHERE` afectan a TODA la tabla. El `WH
 
 ## Etapa 6 - El puente JSON <-> SQL
 
-Este es el momento. Cierra el circulo: consulta con SQL y devuelve el resultado como JSON:
+Este es el momento. Cierra el círculo: consulta con SQL y devuelve el resultado como JSON:
 
 ```javascript
 const rows = selSeccion.all('1114');
 const json = JSON.stringify(rows, null, 2);
-console.log('Como JSON:');
+console.log('Cómo JSON:');
 console.log(json);
 ```
 
-Ahora los datos salen de la base en disco y vuelven al mundo JavaScript como JSON, listos para mandarlos por internet, guardarlos en un archivo o mostrarlos en una pantalla.
+Ahora los datos salen de la base en disco y vuelven al mundo JavaScript como JSON, listos para enviarlos por internet, guardarlos en un archivo o mostrarlos en una pantalla.
 
-## Etapa 7 - Desafio
+## Etapa 7 - Desafío
 
-Agrega dos tablas mas: `cursos` y `inscripciones`. La idea: un alumno puede inscribirse a varios cursos.
+Agrega dos tablas más: `cursos` y `inscripciones`. La idea: un alumno puede inscribirse a varios cursos.
 
 ```javascript
 db.exec(`
@@ -204,10 +204,10 @@ db.exec(`
 `);
 ```
 
-Despues cargá cursos e inscripciones, y resolvé estas consultas:
+Después carga cursos e inscripciones, y resuelve estas consultas:
 
-1. Que alumnos se inscribieron a "Base de Datos"?
-2. Cuantos cursos tiene cada alumno?
+1. ¿Qué alumnos se inscribieron a "Base de Datos"?
+2. ¿Cuántos cursos tiene cada alumno?
 
 Pista: para la primera necesitas un `JOIN` entre las tres tablas. Para la segunda, `GROUP BY`.
 
@@ -218,4 +218,4 @@ Cada alumno entrega:
 1. `escuela.js` completo y funcionando.
 2. El archivo `escuela.db` generado.
 3. Respuesta escrita a las preguntas de las Etapas 2 y 7.
-4. Una frase explicando, con sus palabras, para que usa JSON y para que usa SQLite.
+4. Una frase explicando, con sus palabras, para qué usa JSON y para qué usa SQLite.

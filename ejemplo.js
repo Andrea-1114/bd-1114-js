@@ -60,7 +60,7 @@ for (const a of alumnos) {
 const insertCurso = db.prepare('INSERT INTO cursos (nombre) VALUES (?)');
 const idCurso = new Map();
 
-for (const nombre of ['Base de Datos', 'Programacion', 'Matematica']) {
+for (const nombre of ['Base de Datos', 'Programación', 'Matemática']) {
   const res = insertCurso.run(nombre);
   idCurso.set(nombre, Number(res.lastInsertRowid));
 }
@@ -68,10 +68,10 @@ for (const nombre of ['Base de Datos', 'Programacion', 'Matematica']) {
 const insertInscripcion = db.prepare('INSERT INTO inscripciones (alumno_id, curso_id) VALUES (?, ?)');
 
 insertInscripcion.run(idPorNombre.get('Ana'), idCurso.get('Base de Datos'));
-insertInscripcion.run(idPorNombre.get('Ana'), idCurso.get('Programacion'));
+insertInscripcion.run(idPorNombre.get('Ana'), idCurso.get('Programación'));
 insertInscripcion.run(idPorNombre.get('Luis'), idCurso.get('Base de Datos'));
 insertInscripcion.run(idPorNombre.get('Pedro'), idCurso.get('Base de Datos'));
-insertInscripcion.run(idPorNombre.get('Marta'), idCurso.get('Matematica'));
+insertInscripcion.run(idPorNombre.get('Marta'), idCurso.get('Matemática'));
 
 // ---------------------------------------------------------------------------
 // 3) SQL responde.
@@ -83,12 +83,12 @@ const selMayores = db.prepare('SELECT nombre, edad FROM alumnos WHERE edad >= ? 
 console.log('Mayores de 20:', selMayores.all(20));
 
 const selPrimero = db.prepare('SELECT * FROM alumnos ORDER BY edad DESC LIMIT 1');
-console.log('El mas grande:', selPrimero.get());
+console.log('El más grande:', selPrimero.get());
 
 const selCuenta = db.prepare('SELECT COUNT(*) AS total FROM alumnos');
 console.log('Total de alumnos:', selCuenta.get());
 
-// JOIN: que alumnos se inscribieron a "Base de Datos".
+// JOIN: qué alumnos se inscribieron a "Base de Datos".
 const selInscritos = db.prepare(`
   SELECT a.nombre, a.seccion
   FROM alumnos a
@@ -97,9 +97,9 @@ const selInscritos = db.prepare(`
   WHERE c.nombre = ?
   ORDER BY a.nombre
 `);
-console.log('Inscriptos a Base de Datos:', selInscritos.all('Base de Datos'));
+console.log('Inscritos a Base de Datos:', selInscritos.all('Base de Datos'));
 
-// GROUP BY: cuantos cursos tiene cada alumno.
+// GROUP BY: cuántos cursos tiene cada alumno.
 const selPorAlumno = db.prepare(`
   SELECT a.nombre, COUNT(i.curso_id) AS cursos
   FROM alumnos a
@@ -110,10 +110,10 @@ const selPorAlumno = db.prepare(`
 console.log('Cursos por alumno:', selPorAlumno.all());
 
 // ---------------------------------------------------------------------------
-// 4) tabla -> JSON: cierra el circulo.
+// 4) tabla -> JSON: cierra el círculo.
 // ---------------------------------------------------------------------------
 const rows = selSeccion.all('1114');
-console.log('Como JSON:');
+console.log('Cómo JSON:');
 console.log(JSON.stringify(rows, null, 2));
 
 db.close();
