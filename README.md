@@ -30,21 +30,35 @@ Debe devolver `v22.5.0` o superior.
 4. Cierra la terminal y ábrela de nuevo
 5. Verifica otra vez con `node --version`
 
-## Cómo empezar
+## Elige tu clase
+
+### Clase 1 - JSON y SQLite
 
 1. Lee `guia.md` para entender el concepto (JSON vs SQLite).
 2. Sigue `paso-a-paso.md` etapa por etapa.
 3. Cuando quieras ver el resultado completo, ejecuta:
 
 ```bash
-node ejemplo.js
+node --experimental-sqlite ejemplo.js
 ```
+
+### Clase 2 - Integridad de datos
+
+Pasa de una base que funciona a una base en la que puedes confiar. Vas a auditar datos, agregar restricciones y comprobar que SQLite rechace información inválida.
+
+Ruta rápida:
+
+1. Abre `clase-2-integridad-datos/guia-estudiante.md`.
+2. Ejecuta el punto de partida: `node --experimental-sqlite clase-2-integridad-datos/ejercicio-starter.js`.
+3. Completa los `TODO` del starter y repite las pruebas hasta que el resumen indique `16/16 en OK`.
+4. Resuelve el reto final con `JOIN` y `GROUP BY` sin buscar una solución completa en este repositorio.
 
 ## Qué archivos mirar primero
 
 1. `guia.md`
 2. `paso-a-paso.md`
 3. `ejemplo.js`
+4. `clase-2-integridad-datos/guia-estudiante.md` si vas a realizar la Clase 2
 
 ## Qué hace cada parte
 
